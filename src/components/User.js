@@ -8,7 +8,7 @@ import Pagination from "./Pagination";
 const User = () => {
     const [dataUsers, setDataUsers] = useState([]);
     const [loading, setLoading] = useState(true);
-    // const [error, setError] = useState(null);
+    const [error, setError] = useState(null);
     const URL = "https://dummyjson.com/users";
 
     // ---- crate user ----
@@ -79,7 +79,9 @@ const User = () => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Deleted!',
-                    text: 'Successfully deleted user!'
+                    text: 'Successfully deleted user!',
+                    timer: 2000,
+                    timerProgressBar: true,
                 })
             }
         })
@@ -90,11 +92,13 @@ const User = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
 
+    const sortedUsers = [...dataUsers].sort((a,b) => b.id - a.id)
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentUsers = dataUsers.slice(indexOfFirstItem, indexOfLastItem);
+    const currentUsers = sortedUsers.slice(indexOfFirstItem, indexOfLastItem);
 
-    const totalPages = Math.ceil(dataUsers.length / itemsPerPage);
+    const totalPages = Math.ceil(sortedUsers.length / itemsPerPage);
 
     const handlePageChange = (pageNumber) => {
         if (pageNumber >= 1 && pageNumber <= totalPages) {
@@ -127,9 +131,9 @@ const User = () => {
         return <>Loading...</>
     }
 
-    // if (error) {
-    //     return <>Error: {error}</>
-    // }
+    if (error) {
+        return <>Error: {error}</>
+    }
 
 
 
@@ -140,7 +144,7 @@ const User = () => {
                 <button onClick={openCreateModal} className="bg-blue-400 hover:bg-blue-500 text-white py-2 px-4 rounded-md duration-300 font-semibold sm:w-auto">Create User</button>
             </div>
 
-            <div className="overflow-x-auto rounded-lg border border-black shadow-md">
+            <div className="overflow-x-auto shadow-md">
                 <table className="min-w-full border-collapse table-auto">
                     <thead>
                         <tr className="bg-gray-200 uppercase text-sm sm:text-md">
@@ -156,8 +160,8 @@ const User = () => {
                     <tbody>
                         {[...currentUsers].sort((a,b) => b.id - a.id).map((dataUser, index) => (
                             <tr key={dataUser.id} className="hover:bg-gray-100 transition duration-200 text-xs sm:text-sm">
-                                <td className="border border-black px-6 py-3 text-sm text-center">{index + 1}</td>
-                                <td className="border border-black px-6 py-3 text-sm">{dataUser.firstName}</td>
+                                <td className="border border-black px-6 py-3 text-sm text-center capitalize">{indexOfFirstItem + index + 1}</td>
+                                <td className="border border-black px-6 py-3 text-sm capitalize">{dataUser.firstName}</td>
                                 <td className="border border-black px-6 py-3 text-sm capitalize">{dataUser.lastName}</td>
                                 <td className="border border-black px-6 py-3 text-sm text-center">{dataUser.age}</td>
                                 <td className="border border-black px-6 py-3 text-sm capitalize">{dataUser.gender}</td>

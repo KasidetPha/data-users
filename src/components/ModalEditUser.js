@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 const ModalEditUser = ({ isOpen, onClose, user, onSubmitEditUser }) => {
     // console.log(user?.firstName);
@@ -21,16 +22,40 @@ const ModalEditUser = ({ isOpen, onClose, user, onSubmitEditUser }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const updateUser = {
-            ...user,
-            firstName,
-            lastName,
-            age,
-            gender,
-            company: {department}
-        };
-        onSubmitEditUser(updateUser);
-        onClose();
+
+        Swal.fire({
+            icon: 'warning',
+            title: 'Are you sure?',
+            text: 'Do you want to edit user?',
+            showCancelButton: true,
+            confirmButtonText: 'Yes I do!',
+            confirmButtonColor: '#5CB85C',
+            cancelButtonColor: '#d33'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                const updateUser = {
+                    ...user,
+                    firstName,
+                    lastName,
+                    age,
+                    gender,
+                    company: {department}
+                };
+
+                onSubmitEditUser(updateUser);
+                onClose();
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Edited!',
+                    text: 'Successfully Edited user!',
+                    timer: 2000,
+                    timerProgressBar: true
+                })
+            }
+        })
+
     }
 
     if (!isOpen) return null;

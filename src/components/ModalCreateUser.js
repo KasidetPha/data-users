@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Swal from 'sweetalert2'
 
 const ModalCreateUser = ({ isOpen, onClose, onSubmitUser }) => {
     const [inputDataUser, setInputDataUser] = useState({
@@ -18,6 +19,15 @@ const ModalCreateUser = ({ isOpen, onClose, onSubmitUser }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: 'Create user successfuly!',
+            timer: 2000,
+            timerProgressBar: true,
+        })
+
         onSubmitUser(inputDataUser);
         setInputDataUser({
             firstName: '',
