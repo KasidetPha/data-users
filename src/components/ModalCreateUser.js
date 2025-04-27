@@ -64,9 +64,9 @@ const ModalCreateUser = ({ isOpen, onClose, onSubmitUser }) => {
     return (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
             <form onSubmit={handleSubmit}>
-                <div className="bg-white p-10 rounded-xl shadow-2xl-">
+                <div className="bg-white p-10 rounded-xl shadow-2xl">
                     <div className='space-y-4'>
-                        <div className='grid grid-cols-2 gap-4'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                             <div className='flex flex-col'>
                                 <p className='text-gray-400'>Firstname</p>
                                 <input type="text" className='border rounded-md py-2 px-3 w-full' name="firstName" value={inputDataUser.firstName} onChange={handleChange} />
@@ -80,7 +80,7 @@ const ModalCreateUser = ({ isOpen, onClose, onSubmitUser }) => {
                             </div>
                         </div>
 
-                        <div className='grid grid-cols-3 gap-4'>
+                        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                             <div className='flex flex-col'>
                                 <p className='text-gray-400'>Department</p>
                                 <input type="text" className='border rounded-md py-2 px-3' name="department" value={inputDataUser.department} onChange={handleChange} />
