@@ -168,10 +168,10 @@ const User = () => {
                                 <td className="border border-black px-6 py-3 text-sm capitalize">{dataUser.company.department}</td>
                                 <td className="border border-black px-6 py-3 text-sm text-center">
                                     <div className="flex gap-4 justify-center">
-                                        <button onClick={() => openEditModal(dataUser)} className="bg-yellow-400 hover:bg-yellow-500 duration-300 p-2 sm:p-3 rounded-md shadow-md">
+                                        <button onClick={() => openEditModal(dataUser)} className="bg-yellow-400 hover:bg-yellow-500 duration-300 p-1 sm:p-2 rounded-md shadow-md">
                                             <Icon className="text-white" icon="lucide:edit" width="24" height="24" />
                                         </button>
-                                        <button type="button" onClick={() => handleDeleteUser(dataUser.id)} className="bg-red-400 hover:bg-red-500 duration-300 p-2 sm:p-3 rounded-md shadow-lg">
+                                        <button type="button" onClick={() => handleDeleteUser(dataUser.id)} className="bg-red-400 hover:bg-red-500 duration-300 p-1 sm:p-2 rounded-md shadow-lg">
                                             <Icon className="text-white" icon="tabler:trash" width="24" height="24" />
                                         </button>
                                     </div>
