@@ -66,6 +66,7 @@ const ModalEditUser = ({ isOpen, onClose, user, onSubmitEditUser }) => {
                 };
 
                 onSubmitEditUser(updateUser);
+                setError({})
                 onClose();
 
                 Swal.fire({

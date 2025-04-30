@@ -8,7 +8,7 @@ import Pagination from "./Pagination";
 const User = () => {
     const [dataUsers, setDataUsers] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
     const URL = "https://dummyjson.com/users";
 
     // ---- crate user ----
@@ -131,11 +131,9 @@ const User = () => {
         return <>Loading...</>
     }
 
-    if (error) {
-        return <>Error: {error}</>
-    }
-
-
+    // if (error) {
+    //     return <>Error: {error}</>
+    // }
 
     return (
         <div className="p-4 sm:p-6 my-10 box-border max-w-[1200px] mx-auto">
