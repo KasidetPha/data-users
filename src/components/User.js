@@ -156,20 +156,20 @@ const User = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {[...currentUsers].sort((a,b) => b.id - a.id).map((dataUser, index) => (
-                            <tr key={dataUser.id} className="hover:bg-gray-100 transition duration-200 text-xs sm:text-sm">
+                        {[...currentUsers].sort((a,b) => b.id - a.id).map((currentUsers, index) => (
+                            <tr key={currentUsers.id} className="hover:bg-gray-100 transition duration-200 text-xs sm:text-sm">
                                 <td className="border border-black px-6 py-3 text-sm text-center capitalize">{indexOfFirstItem + index + 1}</td>
-                                <td className="border border-black px-6 py-3 text-sm capitalize">{dataUser.firstName}</td>
-                                <td className="border border-black px-6 py-3 text-sm capitalize">{dataUser.lastName}</td>
-                                <td className="border border-black px-6 py-3 text-sm text-center">{dataUser.age}</td>
-                                <td className="border border-black px-6 py-3 text-sm capitalize">{dataUser.gender}</td>
-                                <td className="border border-black px-6 py-3 text-sm capitalize">{dataUser.company.department}</td>
+                                <td className="border border-black px-6 py-3 text-sm capitalize">{currentUsers.firstName}</td>
+                                <td className="border border-black px-6 py-3 text-sm capitalize">{currentUsers.lastName}</td>
+                                <td className="border border-black px-6 py-3 text-sm text-center">{currentUsers.age}</td>
+                                <td className="border border-black px-6 py-3 text-sm capitalize">{currentUsers.gender}</td>
+                                <td className="border border-black px-6 py-3 text-sm capitalize">{currentUsers.company.department}</td>
                                 <td className="border border-black px-6 py-3 text-sm text-center">
                                     <div className="flex gap-4 justify-center">
-                                        <button onClick={() => openEditModal(dataUser)} className="bg-yellow-400 hover:bg-yellow-500 duration-300 p-1 sm:p-2 rounded-md shadow-md">
+                                        <button onClick={() => openEditModal(currentUsers)} className="bg-yellow-400 hover:bg-yellow-500 duration-300 p-1 sm:p-2 rounded-md shadow-md">
                                             <Icon className="text-white" icon="lucide:edit" width="24" height="24" />
                                         </button>
-                                        <button type="button" onClick={() => handleDeleteUser(dataUser.id)} className="bg-red-400 hover:bg-red-500 duration-300 p-1 sm:p-2 rounded-md shadow-lg">
+                                        <button type="button" onClick={() => handleDeleteUser(currentUsers.id)} className="bg-red-400 hover:bg-red-500 duration-300 p-1 sm:p-2 rounded-md shadow-lg">
                                             <Icon className="text-white" icon="tabler:trash" width="24" height="24" />
                                         </button>
                                     </div>
